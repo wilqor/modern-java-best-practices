@@ -1,4 +1,4 @@
-package com.wilqor.workshop.bestpractices.familiar;
+package com.wilqor.workshop.bestpractices.modern.stream;
 
 import java.util.Objects;
 
@@ -47,7 +47,11 @@ public final class FoodProduct {
         return fats;
     }
 
-    static Builder builder() {
+    public int getKcal() {
+        return proteins * 4 + carbohydrates * 4 + fats * 9;
+    }
+
+    public static Builder builder() {
         return new Builder();
     }
 
@@ -73,32 +77,32 @@ public final class FoodProduct {
         private Builder() {
         }
 
-        Builder id(String id) {
+        public Builder id(String id) {
             this.id = id;
             return this;
         }
 
-        Builder name(String name) {
+        public Builder name(String name) {
             this.name = name;
             return this;
         }
 
-        Builder proteins(int proteins) {
+        public Builder proteins(int proteins) {
             this.proteins = proteins;
             return this;
         }
 
-        Builder carbohydrates(int carbohydrates) {
+        public Builder carbohydrates(int carbohydrates) {
             this.carbohydrates = carbohydrates;
             return this;
         }
 
-        Builder fats(int fats) {
+        public Builder fats(int fats) {
             this.fats = fats;
             return this;
         }
 
-        FoodProduct build() {
+        public FoodProduct build() {
             return new FoodProduct(this);
         }
     }
