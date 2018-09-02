@@ -2,7 +2,6 @@ package com.wilqor.workshop.bestpractices.modern.lambda;
 
 import com.wilqor.workshop.bestpractices.familiar.FridgeShelfEntry;
 
-import java.util.Objects;
 import java.util.Set;
 import java.util.UUID;
 import java.util.function.*;
@@ -23,16 +22,6 @@ final class LambdaShowcase {
 
         TriFunction<String, Integer, Set<String>, FridgeShelfEntry> fridgeShelfEntryConstructor =
                 (id, quantity, labels) -> new FridgeShelfEntry(id, quantity, labels);
-    }
-
-    @FunctionalInterface
-    interface TriFunction<T, U, V, R> {
-        R apply(T t, U u, V v);
-
-        default <X> TriFunction<T, U, V, X> andThen(Function<? super R, ? extends X> after) {
-            Objects.requireNonNull(after);
-            return (T t, U u, V v) -> after.apply(apply(t, u, v));
-        }
     }
 
 
