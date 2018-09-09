@@ -11,11 +11,14 @@ public final class FridgeShelfEntry {
     private final int quantity;
     private final Set<String> labels;
 
-    public FridgeShelfEntry(String productId, int quantity, Set<String> labels) {
+    public FridgeShelfEntry(String productId,
+                            int quantity,
+                            Set<String> labels) {
         this.productId = Objects.requireNonNull(productId);
         this.quantity = quantity;
         if (this.quantity <= 0.0) {
-            throw new IllegalArgumentException("Negative quantity: " + this.quantity);
+            throw new IllegalArgumentException(
+                    "Negative quantity: " + this.quantity);
         }
         this.labels = Set.copyOf(Objects.requireNonNull(labels));
     }

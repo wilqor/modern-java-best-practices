@@ -17,7 +17,8 @@ public final class LineRewriter {
         this.lineConverter = lineConverter;
     }
 
-    public void rewriteLines(Path inputFilePath, Path outputFilePath) throws IOException {
+    public void rewriteLines(Path inputFilePath, Path outputFilePath)
+            throws IOException {
         try (BufferedReader reader = Files.newBufferedReader(inputFilePath);
              BufferedWriter writer = Files.newBufferedWriter(outputFilePath)) {
             String line;

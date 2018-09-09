@@ -40,10 +40,14 @@ public class AthleteShowcase {
                 workoutsCounter.addWorkoutCompleted();
             }
         };
-        List<WorkoutCompleteListener> listeners = List.of(printingListener, caloriesBurnedListener, workoutCompletedListener);
+        List<WorkoutCompleteListener> listeners = List.of(printingListener,
+                caloriesBurnedListener,
+                workoutCompletedListener);
         Athlete athlete = new Athlete(listeners);
         athlete.performWorkouts(workoutRoutine);
-        System.out.println("Total calories burned: " + caloriesBurnedCounter.getTotalCaloriesBurned());
-        System.out.println("Total workouts completed: " + workoutsCounter.getWorkoutsCompleted());
+        System.out.println("Total calories burned: "
+                + caloriesBurnedCounter.getTotalCaloriesBurned());
+        System.out.println("Total workouts completed: "
+                + workoutsCounter.getWorkoutsCompleted());
     }
 }

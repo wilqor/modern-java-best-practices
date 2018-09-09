@@ -23,10 +23,16 @@ public class AthleteShowcase {
                 new Workout(Duration.ofSeconds(5), 83),
                 new Workout(Duration.ofSeconds(2), 3)
         );
-        LongConsumer printingConsumer = caloriesBurned -> System.out.println("Good job, another: " + caloriesBurned + " calories burned!");
-        LongConsumer caloriesBurnedConsumer = caloriesBurned -> caloriesBurnedCounter.addCaloriesBurned(caloriesBurned);
-        LongConsumer workoutCompletedConsumer = caloriesBurned -> workoutsCounter.addWorkoutCompleted();
-        List<LongConsumer> listeners = List.of(printingConsumer, caloriesBurnedConsumer, workoutCompletedConsumer);
+        LongConsumer printingConsumer =
+                caloriesBurned -> System.out.println("Good job, another: "
+                        + caloriesBurned + " calories burned!");
+        LongConsumer caloriesBurnedConsumer =
+                caloriesBurned -> caloriesBurnedCounter.addCaloriesBurned(caloriesBurned);
+        LongConsumer workoutCompletedConsumer =
+                caloriesBurned -> workoutsCounter.addWorkoutCompleted();
+        List<LongConsumer> listeners = List.of(printingConsumer,
+                caloriesBurnedConsumer,
+                workoutCompletedConsumer);
         Athlete athlete = new Athlete(listeners);
         athlete.performWorkouts(workoutRoutine);
         System.out.println("Total calories burned: " + caloriesBurnedCounter.getTotalCaloriesBurned());

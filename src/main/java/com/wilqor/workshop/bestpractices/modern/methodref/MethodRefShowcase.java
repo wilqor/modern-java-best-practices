@@ -24,7 +24,8 @@ final class MethodRefShowcase {
         // unbound
         ToIntFunction<String> strLength = String::length;
         // class constructor
-        TriFunction<String, Integer, Set<String>, FridgeShelfEntry> fridgeShelfEntryConstructor = FridgeShelfEntry::new;
+        TriFunction<String, Integer, Set<String>, FridgeShelfEntry>
+                fridgeShelfEntryConstructor = FridgeShelfEntry::new;
     }
 
     private static String customIntToStr(Integer num) {

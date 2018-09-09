@@ -3,7 +3,6 @@ package com.wilqor.workshop.bestpractices.modern.optional;
 import java.util.Map;
 import java.util.Optional;
 import java.util.OptionalInt;
-import java.util.function.Supplier;
 
 /**
  * @author wilqor
@@ -15,7 +14,7 @@ final class OptionalShowcase {
     public static void main(String[] args) {
         Optional<String> idOptional = Optional.of("0x12345");
         String alternative = idOptional.orElse("alternative id");
-        String lazyAlternative = idOptional.orElseGet(getIdSupplier());
+        String lazyAlternative = idOptional.orElseGet(() -> "lazily evaluated id");
         idOptional.orElseThrow(() -> new IllegalArgumentException("No id found!"));
         idOptional.ifPresentOrElse(
                 id -> System.out.println("Got id: " + id),
@@ -26,11 +25,8 @@ final class OptionalShowcase {
                 "two", OptionalInt.empty(),
                 "three", OptionalInt.of(3)
         );
-        incorrectUsageMap.get("two").ifPresent(num -> System.out.println("Found value for key two: " + num));
-    }
-
-    private static Supplier<String> getIdSupplier() {
-        return () -> "lazily evaluated id";
+        incorrectUsageMap.get("two").ifPresent(num ->
+                System.out.println("Found value for key two: " + num));
     }
 
     private static Optional<String> neverReturnNullOptional(int number) {

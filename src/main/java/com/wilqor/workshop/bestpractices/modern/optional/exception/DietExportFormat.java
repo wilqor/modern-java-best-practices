@@ -14,7 +14,8 @@ enum DietExportFormat {
     CSV,
     PDF;
 
-    private static final Map<String, DietExportFormat> NAME_TO_FORMAT = Stream.of(values())
+    private static final Map<String, DietExportFormat> NAME_TO_FORMAT = Stream
+            .of(values())
             .collect(toMap(Object::toString, e -> e));
 
     static DietExportFormat fromString(String formatName) {
